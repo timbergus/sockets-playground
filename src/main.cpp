@@ -85,9 +85,10 @@ int main()
       std::cout << "Failed sending the message." << std::endl;
       exit(EXIT_FAILURE);
     }
+
+    close(connection);
   }
 
-  close(connection);
   close(socket_fd);
 
   return EXIT_SUCCESS;

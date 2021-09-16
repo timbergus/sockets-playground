@@ -3,10 +3,11 @@ CFLAGS=-std=c++17 -Werror -Wall -Wextra
 
 TARGET=main
 BIN=bin
+SRC=src
 
 OBJS=$(BIN)/main.o
 
-$(BIN)/%.o: %.cpp
+$(BIN)/%.o: $(SRC)/%.cpp
 	@mkdir -p $(BIN)
 	$(CC) $(CFLAGS) -c -MD $< -o $@
 
