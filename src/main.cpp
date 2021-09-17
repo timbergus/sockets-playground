@@ -62,7 +62,7 @@ int main()
 
     char request[1024];
 
-    char respone[] = "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<h1>Hello, world!</h1>";
+    char response[] = "HTTP/1.1 200 OK\nContent-Type: text/html\nContent-Length: 23\nConnection: close\n\n<h1>Hello, world!</h1>";
 
     if (recv(connection, request, sizeof(request), 0) < 0)
     {
@@ -77,18 +77,17 @@ int main()
     // ****************
 
     std::cout << "Sending: \n\n"
-              << respone << "\n"
+              << response << "\n"
               << std::endl;
 
-    if (send(connection, respone, sizeof(respone), 0) < 0)
+    if (send(connection, response, sizeof(response), 0) < 0)
     {
       std::cout << "Failed sending the message." << std::endl;
       exit(EXIT_FAILURE);
     }
-
-    close(connection);
   }
 
+  close(connection);
   close(socket_fd);
 
   return EXIT_SUCCESS;
